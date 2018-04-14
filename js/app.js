@@ -87,19 +87,7 @@ document.addEventListener('DOMContentLoaded', function(){
         };
 
         this.gameOver = function(){
-            if((self.furry.x < 0 || self.furry.x > 9) && (self.furry.y < 0 || self.furry.y > 9)){
-
-            // var position = x + 10 * y,
-            //     x = this.furry.x,
-            //     y = this.furry.y;
-            // if(position - 10 * y < 0 || position - 10 * y > 9 && (position - x)/10 < 0 || (position - z)/10 > 9){
-
-            //if(this.board[ this.index(this.furry.x,this.furry.y) ] < 0 || this.board[ this.index(this.furry.x,this.furry.y) ] > 9){
-
-            // this.position = self.furry.x + (10 * self.furry.y);
-            // var pos = parseInt(this.position);
-            // if(pos - (10 * self.furry.y) < 0 || pos - (10 * self.furry.y) > 9 && (pos - self.furry.x)/10 < 0 || (pos - self.furry.x)/10 > 9){
-
+            if(this.furry.x < 0 || this.furry.x > 9 || this.furry.y < 0 || this.furry.y > 9){
 
             clearInterval(this.idSetInterval);
             self.hideVisibleFurry();
@@ -126,13 +114,5 @@ document.addEventListener('DOMContentLoaded', function(){
     game.showFurry();
     game.showCoin();
     game.startGame();
-
-
-
-
-
-
-
-
 
 });
