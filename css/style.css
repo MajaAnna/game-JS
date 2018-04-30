@@ -18,7 +18,7 @@ section#score {
   background-color:rgba(129, 208, 113, .4);
 }
 
-#board  > div {    
+#board  > div {
   border: 1px solid white;
   float: left;
   width: 64px;
