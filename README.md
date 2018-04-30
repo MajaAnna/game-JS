@@ -9,7 +9,7 @@ Technologies:
 - HTML
 - CSS
 
-Life preview available here: https://majaanna.github.io/game-JS/
+Life preview available here: https://majaanna.github.io/game-JS/previ
 
 
 ## Furry Game
