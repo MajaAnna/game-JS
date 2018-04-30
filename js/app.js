@@ -76,7 +76,6 @@ document.addEventListener('DOMContentLoaded', function(){
         };
 
         this.checkCoinCollision = function(){
-            //if(this.furry.x === this.coin.x && this.furry.y === this.coin.y) {
             if(this.board[ this.index(this.coin.x,this.coin.y) ] === this.board[ this.index(this.furry.x,this.furry.y) ]){
                 document.querySelector('.coin').classList.remove('coin');
                 this.score++;
@@ -89,14 +88,26 @@ document.addEventListener('DOMContentLoaded', function(){
         this.gameOver = function(){
             if(this.furry.x < 0 || this.furry.x > 9 || this.furry.y < 0 || this.furry.y > 9){
 
-            clearInterval(this.idSetInterval);
-            self.hideVisibleFurry();
+                clearInterval(this.idSetInterval);
+                self.hideVisibleFurry();
 
-            var sectionOver = document.querySelector('section#over'),
-                spanOver = document.querySelector('section#over.score');
-            sectionOver.classList.remove('invisible');
-            sectionOver.classList.add('gameOver');
-            spanOver.innerText = 'Your score: ' + this.score;
+                var sectionOver = document.querySelector('section#over'),
+                    pOver = document.querySelector('p.score');
+                var button = document.createElement('button');
+
+                sectionOver.classList.remove('invisible');
+                sectionOver.classList.add('gameOver');
+                sectionOver.appendChild(button);
+
+                button.classList.add('newGame');
+                button.innerText = 'start a new game';
+                pOver.innerText = 'Your score: ' + this.score;
+
+                button.addEventListener('click', function(event){
+                    event.preventDefault;
+                    console.log('blabla')
+                    self.startGame();
+                })
 
             }
         };
