@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function(){
-    console.log('działa');
 
     //konstruktor Furry
     var Furry = function() {
@@ -39,7 +38,14 @@ document.addEventListener('DOMContentLoaded', function(){
             document.querySelector('.furry').classList.remove('furry');
         };
 
+        this.hideVisibleCoin = function(){
+            document.querySelector('.coin').classList.remove('coin');
+        };
+
          this.showCoin = function(){
+             if(document.querySelector('.coin') != null) {
+                 self.hideVisibleCoin();
+             }
              this.board[ this.index(this.coin.x,this.coin.y) ].classList.add('coin');
          };
 
@@ -85,11 +91,14 @@ document.addEventListener('DOMContentLoaded', function(){
             }
         };
 
+        var sectionOver = document.querySelector('section#over');
+
         this.gameOver = function(){
             if(this.furry.x < 0 || this.furry.x > 9 || this.furry.y < 0 || this.furry.y > 9){
 
                 clearInterval(this.idSetInterval);
                 self.hideVisibleFurry();
+                self.hideVisibleCoin();
 
                 var sectionOver = document.querySelector('section#over'),
                     pOver = document.querySelector('p.score');
@@ -103,16 +112,23 @@ document.addEventListener('DOMContentLoaded', function(){
                 button.innerText = 'start a new game';
                 pOver.innerText = 'Your score: ' + this.score;
 
-                button.addEventListener('click', function(event){
-                    event.preventDefault;
-                    console.log('blabla')
-                    self.startGame();
+                button.addEventListener('click', function(){
+                    sectionOver.classList.add('invisible');
+                    button.classList.add('invisible');
+                    var game = new Game();
+                    document.addEventListener('keydown', function(event){
+                        game.turnFurry(event);
+                    });
+                    game.showFurry();
+                    game.showCoin();
+                    game.startGame();
                 })
 
             }
         };
 
         this.startGame = function(){
+            sectionOver.classList.remove('gameOver');
             this.idSetInterval = setInterval(function(){
                 self.moveFurry();}, 250);
         };
@@ -125,5 +141,10 @@ document.addEventListener('DOMContentLoaded', function(){
     game.showFurry();
     game.showCoin();
     game.startGame();
+
+    // document.querySelector('section#over').addEventListener('button.newGame', 'click', function(event){
+    //     event.preventDefault;
+    //     game.startGame();
+    // })
 
 });
