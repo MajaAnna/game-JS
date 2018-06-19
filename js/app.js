@@ -112,7 +112,9 @@ document.addEventListener('DOMContentLoaded', function(){
                 button.innerText = 'start a new game';
                 pOver.innerText = 'Your score: ' + this.score;
 
+                //start a new game
                 button.addEventListener('click', function(){
+                    document.querySelector('section#score strong').innerText = 0;
                     sectionOver.classList.add('invisible');
                     button.classList.add('invisible');
                     var game = new Game();
@@ -141,10 +143,5 @@ document.addEventListener('DOMContentLoaded', function(){
     game.showFurry();
     game.showCoin();
     game.startGame();
-
-    // document.querySelector('section#over').addEventListener('button.newGame', 'click', function(event){
-    //     event.preventDefault;
-    //     game.startGame();
-    // })
 
 });
